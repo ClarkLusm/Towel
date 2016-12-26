@@ -1,0 +1,37 @@
+/* Responsive Styles
+================================================== */
+
+/* All size smaller than 1199 */
+@media only screen and (max-width: 1199px) {
+  
+}
+
+/* All size smaller than 990
+================================================== */
+@media only screen and (max-width: 990px) {
+  
+}
+
+/* All size smaller than 990 and lager 768 
+================================================== */
+@media only screen and (min-width: 768px and max-width: 990px) {
+  
+}
+
+/* All size smaller than 767
+================================================== */
+@media only screen and (max-width: 767px) {
+  
+}
+
+/* All Mobile Screen ( smaller than 481px )
+================================================== */
+@media only screen and (max-width: 480px) {
+
+}
+
+/* All Mobile ( smaller than 320px )
+================================================== */
+@media only screen and (max-width: 319px) {
+
+}
