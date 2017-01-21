@@ -67,7 +67,7 @@ function towel_scripts() {
 
   /********* Adding Multiple Fonts ********************/
   $towel_googlefont = array();
-  array_push( $towel_googlefont, 'Open+Sans:400,700;subset=vietnamese');
+  array_push( $towel_googlefont, 'Lato:400,700;subset=vietnamese');
   $towel_googlefonts = implode("|", $towel_googlefont);
   wp_register_style( 'towel_google_fonts', '//fonts.googleapis.com/css?family='.$towel_googlefonts);
   wp_enqueue_style( 'towel_google_fonts' );

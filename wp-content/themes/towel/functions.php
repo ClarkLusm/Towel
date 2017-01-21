@@ -107,7 +107,7 @@ endif;
 /************************ Edge Widgets  *****************************/
 require get_template_directory() . '/inc/widgets/widgets-functions/register-widgets.php';
 require get_template_directory() . '/inc/widgets/widgets-functions/custom-recent-posts-widgets.php';
-
+require get_template_directory() . '/inc/widgets/widgets-functions/widget-google-map.php';
 
 
 /***************************************************************************************/
@@ -121,3 +121,28 @@ function towel_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'towel_customize_register' );
 
 /***************************************************************************************/
+
+add_action( 'admin_menu', 'my_plugin_menu' );
+
+function my_plugin_menu() {
+  add_options_page( 
+    'My Options',
+    'Homepage Setting',
+    'manage_options',
+    'my-plugin.php',
+    'home_option'
+  );
+}
+
+function home_option(){
+  if(isset($_POST['title'])){
+    add_option( 'title_home', $_POST['title']);
+  }
+  $title = get_option('title_home');
+  ?>
+  <form method="post" action="">
+  <input type="text" name="title" value="<?php echo $title?>">
+  <input type="submit" name="">
+  </form>
+  <?php
+}

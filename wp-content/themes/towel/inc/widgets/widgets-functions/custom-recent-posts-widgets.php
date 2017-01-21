@@ -26,12 +26,17 @@ class Custom_Widget_Recent_Posts extends WP_Widget {
     /** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
     $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
+    $cat_id = ( ! empty( $instance['cat_id'] ) ) ? absint( $instance['cat_id'] ) : '';
+    if ( ! $cat_id )
+      $cat_id = '';
+
     $number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
     if ( ! $number )
       $number = 5;
     $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
     $r = new WP_Query( apply_filters( 'widget_posts_args', array(
+      'cat'                 => $cat_id,
       'posts_per_page'      => $number,
       'no_found_rows'       => true,
       'post_status'         => 'publish',
@@ -41,26 +46,26 @@ class Custom_Widget_Recent_Posts extends WP_Widget {
     if ($r->have_posts()) :
     ?>
     <div class="wg-lastest-news">      
-      <?php echo $args['before_widget']; ?>
+      <?php //echo $args['before_widget']; ?>
       <?php if ( $title ) {
         echo $args['before_title'] . $title . $args['after_title'];
       } ?>
-      <ul>
+      <!-- <ul> -->
       <?php while ( $r->have_posts() ) : $r->the_post(); ?>
-        <li>
+        <div class="item col-sm-4">
           <a href="<?php the_permalink(); ?>">
-            <span class="news-thumb">
-              <?php echo get_the_post_thumbnail('',array( 36, 36)) ?>
+            <span class="post-image">
+              <?php echo get_the_post_thumbnail() ?>
             </span>
-            <strong class="news-headline"><?php get_the_title() ? the_title() : the_ID(); ?>
+            <strong class="post-headline"><?php get_the_title() ? the_title() : the_ID(); ?>
             <?php if ( $show_date ) : ?>
-              <span class="news-time"><?php echo get_the_date(); ?></span>
+              <span class="post-time"><?php echo get_the_date(); ?></span>
             <?php endif; ?>
             </strong>
           </a>
-        </li>
+        </div>
       <?php endwhile; ?>
-      </ul>
+      <!-- </ul> -->
       <?php echo $args['after_widget']; ?>
       <?php
       // Reset the global $the_post as this query will have stomped on it
@@ -76,6 +81,7 @@ class Custom_Widget_Recent_Posts extends WP_Widget {
     $instance = $old_instance;
     $instance['title'] = sanitize_text_field( $new_instance['title'] );
     $instance['number'] = (int) $new_instance['number'];
+    $instance['cat_id'] = (int) $new_instance['cat_id'];
     $instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
     return $instance;
   }
@@ -87,6 +93,7 @@ class Custom_Widget_Recent_Posts extends WP_Widget {
   public function form( $instance ) {
     $title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
     $number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+    $cat_id    = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : '';
     $show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
 ?>
     <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -97,6 +104,17 @@ class Custom_Widget_Recent_Posts extends WP_Widget {
 
     <p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
     <label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+
+    <?php $cats = get_categories();
+      if(!empty($cats)) : ?>
+    <label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php _e( 'Posts from category:' ); ?></label>
+    <select name="<?php echo $this->get_field_name( 'cat_id' ); ?>">
+      <?php foreach ($cats as $cat) : ?>
+      <option value="<?php echo $cat->cat_ID ?>" <?php if($cat_id == $cat->cat_ID) echo "selected"; ?>><?php echo $cat->name ?></option>
+      <?php endforeach ?>
+    </select>
+
+    <?php endif ?>
 <?php
   }
 }
