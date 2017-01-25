@@ -15,7 +15,7 @@
     <div class="top-bar">
       <div class="container">
 
-      <p style="float:left;color:#333;line-height:60px;margin:0">Free shipping on orders over $100. </p>
+      <p style="float:left;color:#333;line-height:60px;margin:0"><i class="fa fa-truck"></i> Free shipping on orders over $100. </p>
 
       <?php do_action('social_links');?>
       <?php dynamic_sidebar( 'top-bar' ); ?>

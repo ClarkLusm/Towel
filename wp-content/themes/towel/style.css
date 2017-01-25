@@ -51,6 +51,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 body {
   background: #fff;
+  line-height: 20px;
+  font-size: 14px;
 }
 .fixed {
   position:fixed;
@@ -305,6 +307,20 @@ a:hover {
   text-decoration: none;
 }
 
+
+.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#header {
+  transition: all .3s;
+}
+.is-sticky .main-logo,
+.is-sticky .main-menu {
+  float: left;
+}
 /* Top bar
 ================================================== */
 .top-bar {
@@ -358,8 +374,8 @@ a:hover {
   text-align: center;
   margin: 0;
 }
-.is-sticky .main-menu .menu {
-  float: right;
+.is-sticky .main-menu ul > li > a {
+  line-height: 80px;
 }
 .main-menu ul > li {
   position: relative;
@@ -541,6 +557,10 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 1.1em;
+  text-align: left;
+}
+#footer .widgettitle:after {
+  display: none;
 }
 .above-footer {
   padding: 20px 0;
@@ -548,6 +568,8 @@ a:hover {
 }
 .above-footer li {
   list-style: none;
+  color: #999;
+  padding: 5px 0
 }
 .tw-choice-us {
   padding: 50px 0;
@@ -591,10 +613,69 @@ a:hover {
   text-align: justify;
   padding: 10px 20px;
 }
+.tw-choice-us .read-more {
+  background-color: #c3512f;
+  box-shadow: 0 -1px 5px -2px #000 inset;
+  padding: 7px 18px;
+  color: #fff;
+  transition: all .3s;
+}
+.tw-choice-us .read-more:hover {
+  background-color: #000;
+  text-decoration: none;
+}
 
 .tw-about-us {
   margin-bottom: 50px;
 }
+.tw-about-us .wrap {
+  background: url(images/banner.jpg) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  padding: 25px 0;
+}
+.tw-about-us .wrap:after {
+  content: '';
+  display: block;
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.tw-about-us .container {
+  position: relative;
+  z-index: 2;
+}
+.tw-about-us .bx-wrapper .bx-viewport {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+.tw-about-us .bxslider .item {
+  text-align: center;
+}
+.tw-about-us .avia-testimonial-image img {
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 30px auto;
+}
+.tw-about-us .avia-testimonial-content {
+  max-width: 750px;
+  color: #fff;
+  margin: 0 auto;
+}
+.tw-about-us .avia-testimonial-meta-mini {
+  color: #fff;
+}
+.tw-about-us .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.tw-about-us .bx-wrapper .bx-pager.bx-default-pager a.active {
+
+}
+
 
 .contact .page-header h1 {
   text-align: center;
