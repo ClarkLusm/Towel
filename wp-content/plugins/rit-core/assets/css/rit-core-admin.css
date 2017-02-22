@@ -1,0 +1,16 @@
+.mega_menu_meta_box div.accordion_content{
+    padding: 0 0 20px 0!important;
+}
+.padding-5{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.customize-control-heading{
+    background: #ccc;
+    padding:5px 10px;
+    margin:20px 0 10px
+}
+.customize-control-heading h3{
+    margin:0;
+    text-transform: capitalize;
+}

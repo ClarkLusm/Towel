@@ -10,12 +10,25 @@
       <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=161141987635003";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div id="page" class="site">
 
     <div class="top-bar">
       <div class="container">
-
-      <p style="float:left;color:#333;line-height:60px;margin:0"><i class="fa fa-truck"></i> Free shipping on orders over $100. </p>
+        <div class="languages">
+          <?php pll_the_languages(array(
+              'show_names' => 0,
+              'show_flags' => 1,
+            )); 
+          ?>
+        </div>
 
       <?php do_action('social_links');?>
       <?php dynamic_sidebar( 'top-bar' ); ?>
@@ -30,15 +43,9 @@
       
       <!-- Main Header============================================= -->
       <div class="container">
-          <div class="menu-toggle">     
-            <div class="line-one"></div>
-            <div class="line-two"></div>
-            <div class="line-three"></div>
-          </div>
-          <!-- end .menu-toggle -->
-
-          <div class="main-logo">
-            <a href="">
+        <div class="row">
+          <div class="main-logo col-xs-3">
+            <a href="<?php echo get_home_url(); ?>">
               <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
             </a>
           </div>
@@ -55,7 +62,7 @@
               'container'       => '',
               'items_wrap'      => '<ul class="menu">%3$s</ul>',
             ); ?>
-            <nav class="main-menu">
+            <nav class="main-menu col-xs-9">
               <?php wp_nav_menu($args);//extract the content from apperance-> nav menu ?>
             </nav> <!-- end #site-navigation -->
             <?php } else {// extract the content from page menu only ?>

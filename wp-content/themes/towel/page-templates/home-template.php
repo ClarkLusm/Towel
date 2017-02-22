@@ -12,117 +12,21 @@
 get_header(); ?>
 
 <div id="main">
-
-  <div class="featured-products">
-    <div class="container">
-    <?php  
-      // $args = array(  
-      //   'post_type' => 'product',  
-      //   'meta_key' => '_featured',  
-      //   'meta_value' => 'yes',  
-      //   'posts_per_page' => 1  
-      // );  
-        
-      // $featured_query = new WP_Query( $args );  
-            
-      // if ($featured_query->have_posts()) :   
-      //   while ($featured_query->have_posts()) :   
-      //     $featured_query->the_post();  
-      //     $product = get_product( $featured_query->post->ID ); 
-      //     $image = wp_get_attachment_image_src( get_post_thumbnail_id( $featured_query->post->ID ), 'single-post-thumbnail' );?>
-
-      <!-- <img src="<?php  //echo $image[0]; ?>" data-id="<?php //echo $featured_query->post->ID; ?>"> -->
-
-    <?php
-      // Output product information here 
-
-      //var_dump($product);
-              
-    //   endwhile;  
-    // endif;  
-        
-    // wp_reset_query(); // Remember to reset  
-
-    ?>
-    <?php echo do_shortcode("[wpcs id='65']"); ?>
-    </div>
-  </div>
-
   <div id="content">
 
-  <div class="featured-category-product clearfix">
-    <div class="container">
-    <?php
+  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-    $taxonomy     = 'product_cat';
-    $orderby      = 'name';  
-    $show_count   = 1;      // 1 for yes, 0 for no
-    $pad_counts   = 1;      // 1 for yes, 0 for no
-    $hierarchical = 1;      // 1 for yes, 0 for no  
-    $title        = '';  
-    $empty        = 0;
-
-    $args = array(
-      'taxonomy'     => $taxonomy,
-      'orderby'      => $orderby,
-      'show_count'   => $show_count,
-      'pad_counts'   => $pad_counts,
-      'hierarchical' => $hierarchical,
-      'title_li'     => $title,
-      'hide_empty'   => $empty
-    );
-
-    $all_categories = get_categories( $args );
-    foreach ($all_categories as $cat) { ?>
-
-    <div class="item col-sm-6">
-    <?php
-      // var_dump($cat);
-      $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-      $image = wp_get_attachment_url( $thumbnail_id );
-      if ( $image ) {
-        // echo '<img src="' . $image . '" alt="" />';
-      }
-      if($cat->category_parent == 0) {
-        $category_id = $cat->term_id;       
-        // echo '<br /><a href="'. get_term_link($cat->slug, 'product_cat') .'">'. $cat->name .'</a>';
-
-        $args2 = array(
-          'taxonomy'     => $taxonomy,
-          'child_of'     => 0,
-          'parent'       => $category_id,
-          'orderby'      => $orderby,
-          'show_count'   => $show_count,
-          'pad_counts'   => $pad_counts,
-          'hierarchical' => $hierarchical,
-          'title_li'     => $title,
-          'hide_empty'   => $empty
-        );
-        $sub_cats = get_categories( $args2 );
-        if($sub_cats) {
-          foreach($sub_cats as $sub_category) {
-            // echo  $sub_category->name ;
-            // var_dump($sub_category);
-          }   
-        }
-      } 
-
-      ?>
-
-    </div>
-
-    <?php      
-    }
-    ?>
-    </div>
-  </div>
+    <p><?php the_content(); ?></p>
+    <hr> <?php endwhile; else: ?>
+    <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+  <?php endif; ?>
   
-  <div class="tw-choice-us">
+  <!-- <div class="tw-choice-us">
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
           <div class="wrap">
-            <div class="icon"><i class="fa fa-diamond"></i></div>
+            <div class="icon"><i class="fa fa-diamond">&nbsp;</i></div>
             <h3>Phương châm hoạt động</h3>
             <p>Lorem ipsum Ea consequat occaecat esse dolor Excepteur id incididunt ullamco ut culpa magna ut culpa nostrud sunt cupidatat magna laboris aliqua consequat dolor labore in cupidatat aliqua pariatur tempor ex pariatur non laboris consectetur mollit aute in ex in consequat qui...</p>
             <a class="read-more">Xem thêm</a>
@@ -146,7 +50,7 @@ get_header(); ?>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="tw-about-us">
     <h2 class="header-title text-center">Phản hồi khách hàng</h2>
@@ -244,7 +148,7 @@ get_header(); ?>
   <div class="tw-address-map">
     <div id="map" style="width:100%;height:300px"></div>
   </div>
-
+  
   </div>
 
 </div>

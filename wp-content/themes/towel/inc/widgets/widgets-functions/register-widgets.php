@@ -61,5 +61,14 @@ function towel_widgets_init() {
       // 'before_title' => '<h2 class="widget-title">',
       // 'after_title' => '</h2>',
     ));
+  register_sidebar(array(
+      'name' => __('Topbar', 'towel'),
+      'id' => 'towel_topbar',
+      'description' => __(''),
+      // 'before_widget' => '<div id="A%1$s" class="widget %2$s">',
+      // 'after_widget' => '</div>',
+      // 'before_title' => '<h2 class="widget-title">',
+      // 'after_title' => '</h2>',
+    ));
 }
 ?>
