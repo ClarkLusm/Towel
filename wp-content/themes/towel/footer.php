@@ -20,7 +20,7 @@
         </div>
         <div class="col-sm-3">
           <h3 class="widgettitle">
-            <?php echo $current_lang == 'vi' ? 'Thông tin Thảo Nguyên Tex' : 'ThaonguyenTex information' ?>
+            <?php echo $current_lang == 'vi' ? 'Thông tin ThaoNguyenTex' : 'ThaonguyenTex information' ?>
           </h3>
           <?php  
             if (has_nav_menu('footermenu')) { 
@@ -37,16 +37,16 @@
           <?php if($current_lang == 'vi') : ?>
           <h3 class="widgettitle">Liên hệ với chúng tôi</h3>
           <ul>
-            <li><i class="fa fa-map-marker"></i> 123 Tiền Hải, Thái Bình, Việt Nam</li>
-            <li><i class="fa fa-phone"></i> 0123 456 789</li>
-            <li><i class="fa fa-envelope"></i> thaonguyen@gmail.com</li>
+            <li><i class="fa fa-map-marker"></i> Cụm công nghiệp làng nghề Phương La, Thái Bình, Việt Nam</li>
+            <li><i class="fa fa-phone"></i> 097 825 0710</li>
+            <li><i class="fa fa-envelope"></i> thaonguyenthu92@gmail.com</li>
           </ul>
           <?php else : ?>
           <h3 class="widgettitle">Contact us</h3>
           <ul>
-            <li><i class="fa fa-map-marker"></i> 123 TienHai, ThaiBinh, VietNam</li>
-            <li><i class="fa fa-phone"></i> +84 123 456 789</li>
-            <li><i class="fa fa-envelope"></i> thaonguyen@gmail.com</li>
+            <li><i class="fa fa-map-marker"></i> Phuong La Industrial clusters, ThaiBinh, VietNam</li>
+            <li><i class="fa fa-phone"></i> +84 978 250 710</li>
+            <li><i class="fa fa-envelope"></i> thaonguyenthu92@gmail.com</li>
           </ul>
           <?php endif ?>
           <?php do_action( 'social_links' ); ?>
@@ -72,10 +72,11 @@
   </div>
 </div>
 <script>
+https://www.google.com/maps/place/Th%C3%A1i+Ph%C6%B0%C6%A1ng,+H%C6%B0ng+H%C3%A0,+Th%C3%A1i+B%C3%ACnh,+Vi%E1%BB%87t+Nam/@20.5962377,106.1899014,14.25z/data=!4m5!3m4!1s0x3135e9911d1423f5:0x79a619db15913e77!8m2!3d20.5958!4d106.1904426
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
+      center: {lat: 20.590015, lng: 106.190443},
       zoom: 8,
       scrollwheel: false,
     });

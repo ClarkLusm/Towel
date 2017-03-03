@@ -53,7 +53,7 @@ get_header(); ?>
   </div> -->
 
   <div class="tw-about-us">
-    <h2 class="header-title text-center">Phản hồi khách hàng</h2>
+    <h2 class="heading text-center">Phản hồi khách hàng</h2>
     <div class="wrap">
       <div class="container">
         <div class="avia-testimonial-wrapper">

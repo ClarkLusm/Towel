@@ -21,9 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! empty( $breadcrumb ) ) {
+if ( ! empty( $breadcrumb ) ) { ?>
 
-	echo $wrap_before;
+<div class="container">
+
+<?php	echo $wrap_before;
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 
@@ -45,4 +47,6 @@ if ( ! empty( $breadcrumb ) ) {
 
 	echo $wrap_after;
 
-}
+} 
+?>
+</div>

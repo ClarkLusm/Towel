@@ -74,8 +74,9 @@
       </div> <!-- !#sticky_header -->
     </header> <!-- end #masthead -->
     <!-- Main Page Start ============================================= -->
-    <div id="content">
-        
+   
       <?php dynamic_sidebar( 'towel_slider_sidebar' ); ?>
 
       <?php dynamic_sidebar( 'towel_woocommerce_sidebar' ); ?>
+
+      <?php custom_breadcrumbs(); ?>
